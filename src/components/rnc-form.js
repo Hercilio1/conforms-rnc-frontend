@@ -1,9 +1,13 @@
 import React from "react"
 import { Form, Field, withFormik } from "formik"
-import TextField from "@material-ui/core/TextField"
+
+import { 
+  InputText,
+  InputNumber
+} from "./forms/inputs"
 
 const MyFormWithFormik = withFormik({
-  mapPropsToValues: () => ({ 
+  mapPropsToValues: () => ({
     tarefa: {
       id: '',
       link: '',
@@ -32,20 +36,13 @@ const MyFormWithFormik = withFormik({
 })
 
 const FormComp = () => (
-  <Form> 
-    <Field type="number" name="tarefa.id" />
-    <MInput type="text" name="tarefa.link" />
+  <Form>
+    <Field label="ID da tarefa" name='tarefa.id' component={InputNumber} fullWidth />
+    <Field label="URL da tarefa" name='tarefa.link' component={InputText} />
     <button type="submit" >
       Submit
     </button>
   </Form>
-)
-
-const MInput = ({ field, ...props }) => (
-  <>
-    <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-    {/* <Input {...field} {...props} /> */}
-  </>
 )
 
 export default MyFormWithFormik(FormComp)
