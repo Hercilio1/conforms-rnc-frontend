@@ -40,14 +40,29 @@ const MyFormWithFormik = withFormik({
 const FormComp = () => (
   <Form>
     <Grid container spacing={3}>
-      <Grid item xs={6}>
+      {/* Col 1 */}
+      <Grid item xs={4}>
         <Field label="ID da tarefa" name='tarefa.id' component={InputNumber} fullWidth />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={8}>
         <Field label="URL da tarefa" name='tarefa.link' component={InputText} fullWidth />
       </Grid>
-      <Grid>
-        <Field label="Boxes" name='cliente' options={top100Films} component={InputAutocomplete} fullWidth />
+      {/* Col 2 */}
+      <Grid item xs={4}>
+        <Field label="Tipo" name='categorias.tipo' options={top100Films} component={InputAutocomplete} fullWidth />
+      </Grid>
+      <Grid item xs={4}>
+        <Field label="Setor" name='categorias.setor' options={top100Films} component={InputAutocomplete} fullWidth />
+      </Grid>
+      <Grid item xs={4}>
+        <Field label="Etapa" name='categorias.etapa' options={top100Films} component={InputAutocomplete} fullWidth />
+      </Grid>
+      {/* Col 3 */}
+      <Grid item xs={6}>
+        <Field label="Cliente" name='cliente' options={top100Films} component={InputAutocomplete} fullWidth />
+      </Grid>
+      <Grid item xs={6}>
+        <Field label="Projeto" name='projeto' options={top100Films} component={InputAutocomplete} fullWidth />
       </Grid>
       <button type="submit" >
         Submit

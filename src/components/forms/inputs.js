@@ -21,41 +21,32 @@ export const InputNumber = ({ field, ...props }) => (
   </>
 )
 
-const filter = createFilterOptions();
-export const InputAutocomplete = ({ field, form: { setFieldValue }, ...props }) => (
+export const InputAutocomplete = ({ field, form: { setFieldValue }, ...props }) => {
+  const filter = createFilterOptions();
+  return (
   <>
     <Autocomplete
       {...field} {...props}
       selectOnFocus
-      getOptionLabel={(option) => option.title || ""}
-      style={{ width: 300 }}
-      defaultValue={{ title: "", year: 1972 }}
       renderInput={(params) => <TextField {...params} label={props.label} variant="outlined" />}
-
       onChange={(e, value) => setFieldValue(field.name, value)}
       filterOptions={(options, params) => {
         const filtered = filter(options, params);
 
         if (params.inputValue !== '') {
           filtered.push({
-            inputValue: params.inputValue,
             title: `Add "${params.inputValue}"`,
+            value: params.inputValue
           });
         }
         return filtered;
       }}
       getOptionLabel={(option) => {
-        // Value selected with enter, right from the input
         if (typeof option === 'string') {
           return option;
         }
-        // Add "xxx" option created dynamically
-        if (option.inputValue) {
-          return option.inputValue;
-        }
-        // Regular option
         return option.title;
       }}
     />
   </>
-)
+)}
