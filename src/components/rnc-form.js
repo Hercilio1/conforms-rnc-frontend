@@ -1,7 +1,8 @@
 import React from "react"
 import { Form, Field, withFormik } from "formik"
+import Grid from '@material-ui/core/Grid';
 
-import { 
+import {
   InputText,
   InputNumber
 } from "./forms/inputs"
@@ -37,11 +38,17 @@ const MyFormWithFormik = withFormik({
 
 const FormComp = () => (
   <Form>
-    <Field label="ID da tarefa" name='tarefa.id' component={InputNumber} fullWidth />
-    <Field label="URL da tarefa" name='tarefa.link' component={InputText} />
-    <button type="submit" >
-      Submit
+    <Grid container spacing={3}>
+      <Grid item xs={6}>
+        <Field label="ID da tarefa" name='tarefa.id' component={InputNumber} fullWidth />
+      </Grid>
+      <Grid item xs={6}>
+        <Field label="URL da tarefa" name='tarefa.link' component={InputText} fullWidth />
+      </Grid>
+      <button type="submit" >
+        Submit
     </button>
+    </Grid>
   </Form>
 )
 
